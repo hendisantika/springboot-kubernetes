@@ -55,3 +55,12 @@ kubectl get describe deployments
 ```shell script
 kubectl get describe deployments
 ```
+## Command to create a deployment object by using the yml file
+```shell script
+kubectl apply -f deployment.yml
+```
+
+## Command to create a service object by using the yml file
+```shell script
+kubectl apply -f service.yml
+```
