@@ -19,3 +19,12 @@ kubectl expose deployment springboot-k8s --type=NodePort
 ```shell script
 kubectl scale --replicas=3 deployment/springboot-k8s
 ```
+## You can autoscale the deployment by using the below command
+```shell script
+kubectl autoscale deployment springboot-k8s --cpu-percent=50 --min=1 --max=10
+```
+
+## Create a docker image 2.0 version to update the deployment by using the below command
+```shell script
+docker build -t springboot-k8s:2.0
+```
