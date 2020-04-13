@@ -37,3 +37,12 @@ kubectl set image deployment springboot-k8s springboot-k8s=springboot-k8s:2.0
 ```shell script
 kubectl get pods
 ```
+## Command to see a list of Deployments
+```shell script
+kubectl get deployments
+```
+
+## Command to see a list of Services
+```shell script
+kubectl get services
+```
