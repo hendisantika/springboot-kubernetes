@@ -46,3 +46,12 @@ kubectl get deployments
 ```shell script
 kubectl get services
 ```
+## Get details of your deployments
+```shell script
+kubectl get describe deployments
+```
+
+## Get details of your replicas
+```shell script
+kubectl get describe deployments
+```
