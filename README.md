@@ -28,3 +28,12 @@ kubectl autoscale deployment springboot-k8s --cpu-percent=50 --min=1 --max=10
 ```shell script
 docker build -t springboot-k8s:2.0
 ```
+## You can update the deployment by using the below command
+```shell script
+kubectl set image deployment springboot-k8s springboot-k8s=springboot-k8s:2.0
+```
+
+## Command to see a list of Pods
+```shell script
+kubectl get pods
+```
