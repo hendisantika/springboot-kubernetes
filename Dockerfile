@@ -1,5 +1,5 @@
 #FROM adoptopenjdk/openjdk11:alpine-jre
-FROM openjdk:11
+FROM openjdk:21-jdk
 LABEL maintainer="hendisantika@yahoo.co.id"
 # Refer to Maven build -> finalName
 #ARG JAR_FILE=target/springboot-kubernetes-0.0.1-SNAPSHOT.jar

@@ -2,7 +2,7 @@
 ## Create a docker image by using the below command
 
 ```
-docker build -t springboot-k8s:1.0
+docker build -t springboot-k8s:1.0 .
 ```
 
 ## Create a deployment by using the below command
