@@ -11,7 +11,7 @@
     <groupId>com.hendisantika</groupId>
     <artifactId>springboot-k8s</artifactId>
     <version>0.0.1</version>
-    <name>springboot-kubernetes</name>
+    <name>springboot-kubernetes-sample</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

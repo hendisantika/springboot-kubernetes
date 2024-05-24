@@ -86,7 +86,7 @@ jobs:
           #          tags: hendisantika/bmi:${{ steps.meta.outputs.tags }}
           #          tags: ${{ steps.meta.outputs.tags }}
           #          tags: hendisantika/bmi:latest
-          tags: hendisantika/springboot-k8s:${{ github.run_number }}
+          tags: hendisantika/springboot-kubernetes-sample:${{ github.run_number }}
           build-args: |
             GIT_VERSION_TAG=${{ env.RELEASE_VERSION }}
             GIT_COMMIT_MESSAGE=${{ github.event.head_commit.message }}
