@@ -6,12 +6,14 @@ on:
       - 'src/**'
       - '.github/workflows/app-workflow.yml'
       - 'pom.xml'
+      - 'Dockerfile'
   push:
     branches: [ master ]
     paths:
       - 'src/**'
       - '.github/workflows/app-workflow.yml'
       - 'pom.xml'
+      - 'Dockerfile'
 
 jobs:
   project-build:
