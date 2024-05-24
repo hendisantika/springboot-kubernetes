@@ -1,20 +1,39 @@
-#FROM adoptopenjdk/openjdk11:alpine-jre
-#FROM openjdk:21-jdk
-FROM bellsoft/liberica-openjdk-debian:21
+FROM maven:3.9.6-eclipse-temurin-21-alpine AS build
+
+RUN mkdir /project
+
+COPY . /project
+
+# Passed from Github Actions
+ARG GIT_VERSION_TAG=unspecified
+ARG GIT_COMMIT_MESSAGE=unspecified
+ARG GIT_VERSION_HASH=unspecified
+
+WORKDIR /project
+
+# You can read these files for the information in your application
+RUN echo $GIT_VERSION_TAG > GIT_VERSION_TAG.txt
+RUN echo $GIT_COMMIT_MESSAGE > GIT_COMMIT_MESSAGE.txt
+RUN echo $GIT_VERSION_HASH > GIT_VERSION_HASH.txt
+
+RUN mvn clean package
+
+#FROM adoptopenjdk/openjdk21:eclipse-temurin-21-alpine
+#FROM bellsoft/liberica-openjdk-debian:21
+#FROM openjdk:21-slim
+FROM amazoncorretto:21-alpine-jdk
 LABEL maintainer="hendisantika@yahoo.co.id"
-# Refer to Maven build -> finalName
-#ARG JAR_FILE=target/springboot-kubernetes-0.0.1-SNAPSHOT.jar
-# cd /opt/app
-#WORKDIR /opt/app
+
 RUN mkdir /app
-COPY --from=build /project/target/springboot-k8s-0.0.1.jar /app/app.jar
+
+RUN addgroup -g 1001 -S hendigroup
+
+RUN adduser -S hendi -u 1001
+
+COPY --from=build /project/target/springboot-k8s.0.0.1 /app/bmi.jar
 
 WORKDIR /app
 
-# cp target/spring-boot-web.jar /opt/app/app.jar
-COPY ${JAR_FILE} app.jar
+RUN chown -R hendi:hendigroup /app
 
-VOLUME /tmp
-EXPOSE 8080
-ADD target/springboot-k8s-0.0.1.jar app.jar
-ENTRYPOINT ["java","-jar","app.jar"]
+CMD java $JAVA_OPTS -jar bmi.jar
