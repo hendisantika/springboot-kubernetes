@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hendisantika</groupId>
-    <artifactId>springboot-kubernetes</artifactId>
+    <artifactId>springboot-k8s</artifactId>
     <version>0.0.1</version>
     <name>springboot-kubernetes</name>
     <description>Demo project for Spring Boot</description>
