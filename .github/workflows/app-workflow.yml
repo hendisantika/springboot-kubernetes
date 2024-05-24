@@ -1,4 +1,4 @@
-name: BMI application workflow
+name: Spring Boot K8s application workflow
 on:
   pull_request:
     branches: [ master ]
