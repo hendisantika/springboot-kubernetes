@@ -1,7 +1,7 @@
 # Use a base image with Java 21
 FROM bellsoft/liberica-openjdk-debian:21
 LABEL authors="hendisantika"
-
+RUN mvn clean package
 # Copy the JAR package into the image
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
