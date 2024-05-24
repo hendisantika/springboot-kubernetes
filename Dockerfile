@@ -1,13 +1,39 @@
-# Use a base image with Java 21
-FROM bellsoft/liberica-openjdk-debian:21
-LABEL authors="hendisantika"
+FROM maven:3.9.6-eclipse-temurin-21-alpine AS build
+
+RUN mkdir /project
+
+COPY . /project
+
+# Passed from Github Actions
+ARG GIT_VERSION_TAG=unspecified
+ARG GIT_COMMIT_MESSAGE=unspecified
+ARG GIT_VERSION_HASH=unspecified
+
+WORKDIR /project
+
+# You can read these files for the information in your application
+RUN echo $GIT_VERSION_TAG > GIT_VERSION_TAG.txt
+RUN echo $GIT_COMMIT_MESSAGE > GIT_COMMIT_MESSAGE.txt
+RUN echo $GIT_VERSION_HASH > GIT_VERSION_HASH.txt
+
 RUN mvn clean package
-# Copy the JAR package into the image
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
 
-# Expose the application port
-EXPOSE 8080
+#FROM adoptopenjdk/openjdk21:eclipse-temurin-21-alpine
+#FROM bellsoft/liberica-openjdk-debian:21
+#FROM openjdk:21-slim
+FROM amazoncorretto:21-alpine-jdk
+LABEL maintainer="hendisantika@yahoo.co.id"
 
-# Run the App
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+RUN mkdir /app
+
+RUN addgroup -g 1001 -S hendigroup
+
+RUN adduser -S hendi -u 1001
+
+COPY --from=build /project/target/springboot-k8s-0.0.1.jar /app/app.jar
+
+WORKDIR /app
+
+RUN chown -R hendi:hendigroup /app
+
+CMD java $JAVA_OPTS -jar bmi.jar
