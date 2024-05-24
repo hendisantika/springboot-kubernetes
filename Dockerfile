@@ -30,7 +30,7 @@ RUN addgroup -g 1001 -S hendigroup
 
 RUN adduser -S hendi -u 1001
 
-COPY --from=build /project/target/springboot-k8s.0.0.1 /app/bmi.jar
+COPY --from=build /project/target/springboot-k8s-0.0.1 /app/app.jar
 
 WORKDIR /app
 
