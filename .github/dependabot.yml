@@ -68,8 +68,6 @@ updates:
       prefix: "build"
       include: scope
     ignore:
-      # Stay on the JDK 25 LTS line; only accept patch/minor image updates
-      - dependency-name: "maven"
-        update-types: [ "version-update:semver-major" ]
+      # Stay on the JDK 25 LTS line (amazoncorretto:25-*); only accept patch/minor image updates
       - dependency-name: "amazoncorretto"
         update-types: [ "version-update:semver-major" ]

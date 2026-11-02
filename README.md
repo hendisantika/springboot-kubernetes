@@ -13,9 +13,9 @@ A simple Spring Boot REST application that shows how to containerize an app and 
 |----------------|------------------------------------------|
 | Java           | 25 (Amazon Corretto)                     |
 | Spring Boot    | 4.1.x (Web MVC, Actuator)                |
-| Build tool     | Maven (wrapper included: `./mvnw`)       |
+| Build tool     | Maven 3.9.11 (wrapper included: `./mvnw`) |
 | Testing        | JUnit 5, Testcontainers 2.x              |
-| Container      | Docker (`amazoncorretto:25-alpine-jdk`)  |
+| Container      | Docker (`amazoncorretto:25-alpine-jdk`, multi-stage, non-root) |
 | Orchestration  | Kubernetes                               |
 | CI/CD          | GitHub Actions + Dependabot              |
 
