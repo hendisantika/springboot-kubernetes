@@ -36,4 +36,4 @@ WORKDIR /app
 
 RUN chown -R hendi:hendigroup /app
 
-CMD java $JAVA_OPTS -jar bmi.jar
+CMD java $JAVA_OPTS -jar app.jar
